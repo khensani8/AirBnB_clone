@@ -1,56 +1,65 @@
+# 0x00. AirBnB clone - The console
 
-<p align="center"><img src= "https://media.itsnicethat.com/original_images/563b97a87fa44cff9d001760.gif" width="600" height="400"/></p>
+## Description
+
+This repository contains the first tasks of the AirBnB clone project for [ALX](https://www.alxafrica.com/software/).
+During this first part of the project we had to::
+- Put in place a parent class (called BaseModel) to take care of the initialization, serialization and deserialization of your future instances.
+- Create a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file
+- Create all classes used for AirBnB (User, State, City, Place…) that inherit from BaseModel
+- Create the first abstracted storage engine of the project: File storage.
+- Create all unittests to validate all our classes and storage engine
 
 
-# AirBnB clone - The console :ab::rocket:
-The AirBnB clone project starts now until… the end of the first year. The goal of the project is to deploy on your server a simple copy of the AirBnB website. 
+### Files description
 
-*
+- **AUTHORS**
+ This file has a list of individuals that contributed content to the repository.
+
+- **console.py**
+It contains a command line interpreter limited to a specific use-case. In our case, we want to be able to manage the objects of our project using this console.
+
+- **models**
+This folder contains all the Class modules of the project, and a folder called engine. 
+
+- **tests**
+This folder contains all the UNITTEST of every module stored in the models folder and the TEST of the console.py file.
+
+## Features
+
+- **Programming language:** python3
+- **Style:** All modules use the **PEP 8** style
+- **Documentation:** All modules have documentation, including the functions, classes,etc.
 
 
-## Table of contents :clipboard:
+## Usage
 
- - [Description](https://github.com/robpalacios1/AirBnB_clone/#description-triangular_ruler)
- - [Installation](https://github.com/robpalacios1/AirBnB_clone/#installation-floppy_disk)
- - [File description](https://github.com/robpalacios1/AirBnB_clone/blob/master/README.md#file-description-file_folder)
- - [Example](https://github.com/robpalacios1/AirBnB_clone#example-computer)
- - [Contributors](https://github.com/robpalacios1/AirBnB_clone#contributors)
-
-## Description :triangular_ruler:
-
-The console is the first segment of the `AirBnB project` at `Holberton School` that will collectively cover fundamental concepts of higher level programming. The goal of `AirBnB project` is to eventually deploy our server a simple copy of the `AirBnB Website(HBnB)`. A command interpreter is created in this segment to manage objects for the `AirBnB(HBnB) website.`
-
-This is the first step towards building our first full web application: the AirBnB clone.
-
-A command interpreter to manage our Airbnb clone objects:
-
-- Create a new object (ex: a new User or a new Place)
-- Retrieve an object from a file, a database etc…
-- Do operations on objects (count, compute stats, etc…)
-- Update attributes of an object
-- Destroy an object
-
-<p align="center">
-<img src = "https://i.imgur.com/ROvfVRP.png"/>
- </p>
-
-## Installation :floppy_disk:
- - Clone this repository: `git clone "https://github.com/robpalacios1/AirBnB_clone.git"`
- - Access AirBnb directory: `cd AirBnB_clone`
- - Run hbnb(interactively): `./console` and enter command
- - Run hbnb(non-interactively): `echo "<command>" | ./console.py`
- 
-## File description :file_folder: 
-
+The console (console.py) works like this in interactive mode:
 ```
-AUTHORS     /models    test_base_model_dict.py    test_base_model.py    README.md    test_save_reload_base_model.py  
+$ ./console.py
+(hbnb) help
 
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit  create  destroy  show  all  update
+
+(hbnb)
+(hbnb)
+(hbnb) quit
+$
 ```
 
-## Example :computer:
+But also in non-interactive mode:
+```
+$ echo "help" | ./console.py
+(hbnb)
 
-<p align="center"> 
-<img src = "https://i.imgur.com/c5lYRnU.png"/>
-<img src = "https://i.imgur.com/9oWdkPQ.png"/>
-</p>
-
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit  create  destroy  show  all  update
+$
+```
+## Authors
+| Name | GitHub username |
+| ------ | ------ |
+| Khensani Ngobeni | [Khensani-Ngobeni](https://github.com/khensani8) |
