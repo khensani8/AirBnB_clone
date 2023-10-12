@@ -62,4 +62,4 @@ $
 ## Authors
 | Name | GitHub username |
 | ------ | ------ |
-| Khensani Ngobeni | [Khensani-Ngobeni](https://github.com/khensani8) |
+| Khensani Ngobeni | [khensani8](https://github.com/khensani8) |
