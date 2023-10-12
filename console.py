@@ -1,19 +1,20 @@
 #!/usr/bin/python3
-"""defines the HBNB command interperter"""
+"""defines HBNB command interpreter"""
 import cmd
 
 class HBNBCommand(cmd.Cmd):
-	""""commnad interprter for HBNB"""
-	
-	prompt = (hbnb)
-	
-	def do_quit(self, arg):
-		"""Exits the command interpreter"""
-			return True
+    """Command interpreter for the HBNB project"""
 
-	def do_EOF(self, arg):
-		"""Exits the commnad interpreter with (Ctrl+d)"""
-			return True
+    prompt = "(hbnb) "
+
+    def do_quit(self, arg):
+        """Exit the command interpreter"""
+        return True
+
+    def do_EOF(self, arg):
+        """Exit the command interpreter (Ctrl+D)"""
+        return True
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
