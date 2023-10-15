@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 """BaseModel that defines all common attributes/methods for other classes"""
-
-
 import uuid
 from datetime import datetime
-improt models
+import models
+
 
 class BaseModel:
     def __init__(self, *args, **kwargs):
-	"""args for class constructor BaseModel"""
+        """args for class constructor BaseModel"""
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -22,15 +21,15 @@ class BaseModel:
             self.updated_at = self.created_at
 
     def __str__(self):
-	"""string of the BaseModel instance"""
+        """string of the BaseModel instance"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
-	"""update 'updated_at' with the current datetime"""
+        """update 'updated_at' with the current datetime"""
         self.updated_at = datetime.now()
 
     def to_dict(self):
-	"""dictionary representation of instance"""
+        """dictionary representation of instance"""
         new_dict = self.__dict__.copy()
         new_dict['__class__'] = self.__class__.__name__
         new_dict['created_at'] = self.created_at.isoformat()
