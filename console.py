@@ -30,6 +30,7 @@ __classes = {
 }
 
 
+@staticmethod
 def convert_type(value):
     """Convert a string value to its appropriate data type."""
     if value.isdigit():
