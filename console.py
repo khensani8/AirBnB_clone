@@ -49,7 +49,8 @@ class HBNBCommand(cmd.Cmd):
             print([str(obj) for key, obj in all_objects.items() if args[0] in key])
 
     def do_create(self, arg):
-        """Create a new instance of BaseModel, save it, and print the id."""
+        """Create a new instance of User, Place, State, City, Amenity, Review,
+        save it, and print the id."""
         if not arg:
             print("** class name missing **")
         elif arg not in globals():
