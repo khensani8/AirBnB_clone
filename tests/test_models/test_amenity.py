@@ -1,47 +1,63 @@
 #!/usr/bin/python3
 """Module for test Amenity class"""
 import unittest
-import json
-import pep8
-import datetime
-
 from models.amenity import Amenity
-from models.base_model import BaseModel
+from datetime import datetime
 
 
 class TestAmenity(unittest.TestCase):
-    """Test State class implementation"""
-    def test_doc_module(self):
-        """Module documentation"""
-        doc = Amenity.__doc__
-        self.assertGreater(len(doc), 1)
+    """
+    Test cases for the Amenity class.
+    """
 
-    def test_pep8_conformance_amenity(self):
-        """Test that models/amenity.py conforms to PEP8."""
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['models/amenity.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+    def setUp(self):
+        """
+        Set up an Amenity instance for testing.
+        """
+        self.amenity = Amenity()
+        self.amenity.name = "Swimming Pool"
 
-    def test_pep8_conformance_test_amenity(self):
-        """Test that tests/test_models/test_state.py conforms to PEP8."""
-        pep8style = pep8.StyleGuide(quiet=True)
-        res = pep8style.check_files(['tests/test_models/test_amenity.py'])
-        self.assertEqual(res.total_errors, 0,
-                         "Found code style errors (and warnings).")
+    def tearDown(self):
+        """
+        Clean up after testing.
+        """
+        del self.amenity
 
-    def test_doc_constructor(self):
-        """Constructor documentation"""
-        doc = Amenity.__init__.__doc__
-        self.assertGreater(len(doc), 1)
+    def test_instance_attributes(self):
+        """
+        Test if Amenity instance has the expected attributes.
+        """
+        self.assertIsInstance(self.amenity, Amenity)
+        self.assertTrue(hasattr(self.amenity, 'name'))
+        self.assertTrue(hasattr(self.amenity, 'created_at'))
+        self.assertTrue(hasattr(self.amenity, 'updated_at'))
+        self.assertTrue(hasattr(self.amenity, 'id'))
+        self.assertTrue(hasattr(self.amenity, 'to_dict'))
 
-    def test_class(self):
-        """Validate the types of the attributes a class"""
-        with self.subTest(msg='Inheritance'):
-            self.assertTrue(issubclass(Amenity, BaseModel))
+    def test_instance_attributes_types(self):
+        """
+        Test the types of attributes in the Amenity instance.
+        """
+        self.assertEqual(type(self.amenity.name), str)
+        self.assertEqual(type(self.amenity.created_at), datetime)
+        self.assertEqual(type(self.amenity.updated_at), datetime)
+        self.assertEqual(type(self.amenity.id), str)
 
-        with self.subTest(msg='Attributes'):
-            self.assertIsInstance(Amenity.name, str)
+    def test_save(self):
+        """
+        Test the save method in Amenity.
+        """
+        self.amenity.save()
+        self.assertNotEqual(self.amenity.created_at, self.amenity.updated_at)
+
+    def test_to_dict(self):
+        """
+        Test the to_dict method in Amenity.
+        """
+        amenity_dict = self.amenity.to_dict()
+        self.assertEqual(type(amenity_dict), dict)
+        self.assertEqual(amenity_dict['__class__'], 'Amenity')
+        self.assertEqual(amenity_dict['name'], 'Swimming Pool')
 
 
 if __name__ == '__main__':
