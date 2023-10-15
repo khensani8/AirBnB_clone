@@ -4,6 +4,7 @@
 import json
 import os
 from models.base_model import BaseModel
+from models.base_model import User
 
 class FileStorage:
     """
@@ -33,6 +34,7 @@ class FileStorage:
 
     def reload(self):
         """Deserializes JSON file to __objects."""
+        classe = {"BaseModel": BaseModel, "User": User}
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r', encoding='utf-8') as file:
                 new_dict = json.load(file)
