@@ -12,29 +12,36 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    prompt = "(hbnb) "
-    __classes = {
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
-    }
+    """Defines the HolbertonBnB command interpreter.
 
-    @staticmethod
-    def convert_type(value):
-        """Convert a string value to its appropriate data type."""
-        if value.isdigit():
-            return int(value)
-        try:
-            return float(value)
-        except ValueError:
-            return value
+    Attributes:
+        prompt (str): The command prompt."""
+
+
+prompt = "(hbnb) "
+__classes = {
+    "BaseModel",
+    "User",
+    "State",
+    "City",
+    "Place",
+    "Amenity",
+    "Review"
+}
+
+
+def convert_type(value):
+    """Convert a string value to its appropriate data type."""
+    if value.isdigit():
+        return int(value)
+    try:
+        return float(value)
+    except ValueError:
+        return value
 
     def do_EOF(self, arg):
         """Exit the command interpreter (Ctrl+D)"""
+        print("")
         return True
 
     def do_all(self, arg):
@@ -129,6 +136,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def emptyline(self):
+        """Do nothing upon receiving an empty line."""
         pass
 
 
