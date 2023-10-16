@@ -1,48 +1,23 @@
-#!/usr/bin/python3
-"""defines HBNB command interpreter"""
 import cmd
 from models import storage
 from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """Defines the HolbertonBnB command interpreter.
+    prompt = "(hbnb) "
 
-    Attributes:
-        prompt (str): The command prompt."""
-
-
-prompt = "(hbnb) "
-__classes = {
-    "BaseModel",
-    "User",
-    "State",
-    "City",
-    "Place",
-    "Amenity",
-    "Review"
-}
-
-
-@staticmethod
-def convert_type(value):
-    """Convert a string value to its appropriate data type."""
-    if value.isdigit():
-        return int(value)
-    try:
-        return float(value)
-    except ValueError:
-        return value
+    @staticmethod
+    def convert_type(value):
+        """Convert a string value to its appropriate data type."""
+        if value.isdigit():
+            return int(value)
+        try:
+            return float(value)
+        except ValueError:
+            return value
 
     def do_EOF(self, arg):
         """Exit the command interpreter (Ctrl+D)"""
-        print("")
         return True
 
     def do_all(self, arg):
@@ -57,8 +32,7 @@ def convert_type(value):
             print([str(obj) for key, obj in all_objects.items() if args[0] in key])
 
     def do_create(self, arg):
-        """Create a new instance of User, Place, State, City, Amenity, Review,
-        save it, and print the id."""
+        """Create a new instance of BaseModel, save it, and print the id."""
         if not arg:
             print("** class name missing **")
         elif arg not in globals():
@@ -137,7 +111,6 @@ def convert_type(value):
                 print("** no instance found **")
 
     def emptyline(self):
-        """Do nothing upon receiving an empty line."""
         pass
 
 
